@@ -3,7 +3,7 @@ $unusedPublicIPs = Get-AzPublicIpAddress | Where-Object { $_.IpConfiguration -eq
 $unattachedNICs = Get-AzNetworkInterface | Where-Object { $_.VirtualMachine -eq $null }
 $unattachedDisks = Get-AzDisk | Where-Object { $_.ManagedBy -eq $null }
 
-# List unused Public IPs
+# list unused Public IPs
 if ($unusedPublicIPs.Count -gt 0) {
     Write-Host "Found unused Public IP Addresses:"
     $unusedPublicIPs | ForEach-Object { Write-Host $_.Name }
